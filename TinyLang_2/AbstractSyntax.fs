@@ -1,8 +1,7 @@
-﻿namespace TinyLang_2
+﻿namespace TinyLang2
 
 module AbstractSyntax =
-
     type Expression =
         | Id of string
-        | Num of int 
+        | Num of int
         | Prim of string * Expression * Expression

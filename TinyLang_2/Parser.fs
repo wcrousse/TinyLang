@@ -5,14 +5,14 @@ open Microsoft.FSharp.Text.Lexing
 open Microsoft.FSharp.Text.Parsing.ParseHelpers
 # 1 "Parser.fsy"
 
-    open AbstractSyntax
+    open TinyLang2.AbstractSyntax
 
 # 10 "Parser.fs"
 // This type is the type of tokens accepted by the parser
 type token = 
   | EOF
-  | LPAR
-  | RPAR
+  | LPARN
+  | RPARN
   | PLUS
   | MINUS
   | TIMES
@@ -22,8 +22,8 @@ type token =
 // This type is used to give symbolic names to token indexes, useful for error messages
 type tokenId = 
     | TOKEN_EOF
-    | TOKEN_LPAR
-    | TOKEN_RPAR
+    | TOKEN_LPARN
+    | TOKEN_RPARN
     | TOKEN_PLUS
     | TOKEN_MINUS
     | TOKEN_TIMES
@@ -42,8 +42,8 @@ type nonTerminalId =
 let tagOfToken (t:token) = 
   match t with
   | EOF  -> 0 
-  | LPAR  -> 1 
-  | RPAR  -> 2 
+  | LPARN  -> 1 
+  | RPARN  -> 2 
   | PLUS  -> 3 
   | MINUS  -> 4 
   | TIMES  -> 5 
@@ -55,8 +55,8 @@ let tagOfToken (t:token) =
 let tokenTagToTokenId (tokenIdx:int) = 
   match tokenIdx with
   | 0 -> TOKEN_EOF 
-  | 1 -> TOKEN_LPAR 
-  | 2 -> TOKEN_RPAR 
+  | 1 -> TOKEN_LPARN 
+  | 2 -> TOKEN_RPARN 
   | 3 -> TOKEN_PLUS 
   | 4 -> TOKEN_MINUS 
   | 5 -> TOKEN_TIMES 
@@ -87,8 +87,8 @@ let _fsyacc_tagOfErrorTerminal = 9
 let token_to_string (t:token) = 
   match t with 
   | EOF  -> "EOF" 
-  | LPAR  -> "LPAR" 
-  | RPAR  -> "RPAR" 
+  | LPARN  -> "LPARN" 
+  | RPARN  -> "RPARN" 
   | PLUS  -> "PLUS" 
   | MINUS  -> "MINUS" 
   | TIMES  -> "TIMES" 
@@ -100,8 +100,8 @@ let token_to_string (t:token) =
 let _fsyacc_dataOfToken (t:token) = 
   match t with 
   | EOF  -> (null : System.Object) 
-  | LPAR  -> (null : System.Object) 
-  | RPAR  -> (null : System.Object) 
+  | LPARN  -> (null : System.Object) 
+  | RPARN  -> (null : System.Object) 
   | PLUS  -> (null : System.Object) 
   | MINUS  -> (null : System.Object) 
   | TIMES  -> (null : System.Object) 
@@ -121,7 +121,7 @@ let _fsyacc_immediateActions = [|65535us; 49152us; 65535us; 16385us; 16386us; 16
 let _fsyacc_reductions ()  =    [| 
 # 122 "Parser.fs"
         (fun (parseState : Microsoft.FSharp.Text.Parsing.IParseState) ->
-            let _1 = (let data = parseState.GetInput(1) in (Microsoft.FSharp.Core.Operators.unbox data : AbstractSyntax.Expression)) in
+            let _1 = (let data = parseState.GetInput(1) in (Microsoft.FSharp.Core.Operators.unbox data : TinyLang2.AbstractSyntax.Expression)) in
             Microsoft.FSharp.Core.Operators.box
                 (
                    (
@@ -138,7 +138,7 @@ let _fsyacc_reductions ()  =    [|
                                     _1 
                    )
 # 20 "Parser.fsy"
-                 : AbstractSyntax.Expression));
+                 : TinyLang2.AbstractSyntax.Expression));
 # 142 "Parser.fs"
         (fun (parseState : Microsoft.FSharp.Text.Parsing.IParseState) ->
             let _1 = (let data = parseState.GetInput(1) in (Microsoft.FSharp.Core.Operators.unbox data : string)) in
@@ -168,7 +168,7 @@ let _fsyacc_reductions ()  =    [|
                 (
                    (
 # 25 "Parser.fsy"
-                                            _2 
+                                              _2 
                    )
 # 25 "Parser.fsy"
                  : 'Expr));
@@ -231,5 +231,5 @@ let tables () : Microsoft.FSharp.Text.Parsing.Tables<_> =
     numTerminals = 12;
     productionToNonTerminalTable = _fsyacc_productionToNonTerminalTable  }
 let engine lexer lexbuf startState = (tables ()).Interpret(lexer, lexbuf, startState)
-let Main lexer lexbuf : AbstractSyntax.Expression =
+let Main lexer lexbuf : TinyLang2.AbstractSyntax.Expression =
     Microsoft.FSharp.Core.Operators.unbox ((tables ()).Interpret(lexer, lexbuf, 0))

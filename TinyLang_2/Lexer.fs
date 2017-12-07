@@ -1,14 +1,14 @@
 # 1 "Lexer.fsl"
  
-    module Lexer
+module Lexer
 
-    open System
-    open Microsoft.FSharp.Text.Lexing
-    open Parser
+open System
+open Microsoft.FSharp.Text.Lexing
+open Parser
 
-    let lexemeAsString lexbuf = 
-        LexBuffer<char>.LexemeString lexbuf
-    let keyword s = ID s
+let lexemeAsString lexbuf = 
+    LexBuffer<char>.LexemeString lexbuf
+let keyword s = ID s
 
 # 13 "Lexer.fs"
 let trans : uint16[] array = 
@@ -59,7 +59,7 @@ and _fslex_Token  _fslex_state lexbuf =
           )
   | 1 -> ( 
 # 15 "Lexer.fsl"
-                                                 NUM (Int#2.Parse(lexemeAsString lexbuf))
+                                                 NUM (Int32.Parse(lexemeAsString lexbuf))
 # 63 "Lexer.fs"
           )
   | 2 -> ( 
@@ -69,7 +69,7 @@ and _fslex_Token  _fslex_state lexbuf =
           )
   | 3 -> ( 
 # 17 "Lexer.fsl"
-                           PLUSE 
+                           PLUS 
 # 73 "Lexer.fs"
           )
   | 4 -> ( 

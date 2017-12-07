@@ -1,18 +1,18 @@
 %{
-    open AbstractSyntax
+    open TinyLang2.AbstractSyntax
 %}
 
 %token <int> NUM
 %token <string> ID
 %token PLUS MINUS TIMES DIVIDE
-%token LPAR RPAR
+%token LPARN RPARN
 %token EOF
 
 %left MINUS PLUS
 %left TIMES DIVIDE
 
 %start Main
-%type <AbstractSyntax.Expression> Main
+%type <TinyLang2.AbstractSyntax.Expression> Main
 
 %%
 
@@ -22,7 +22,7 @@ Main:
 Expr:
     ID { Id $1 }
     | NUM { Num $1 }
-    | LPAR Expr RPAR { $2 }
+    | LPARN Expr RPARN { $2 }
     | Expr PLUS Expr { Prim("+", $1, $3)}
     | Expr MINUS Expr { Prim("-", $1, $3)}
     | Expr TIMES Expr { Prim("*", $1, $3)}

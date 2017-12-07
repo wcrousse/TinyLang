@@ -1,20 +1,20 @@
 {
-    module Lexer
+module Lexer
 
-    open System
-    open Microsoft.FSharp.Text.Lexing
-    open Parser
+open System
+open Microsoft.FSharp.Text.Lexing
+open Parser
 
-    let lexemeAsString lexbuf = 
-        LexBuffer<char>.LexemeString lexbuf
-    let keyword s = ID s
+let lexemeAsString lexbuf = 
+    LexBuffer<char>.LexemeString lexbuf
+let keyword s = ID s
 }
 
 rule Token = parse
     | [' ' '\t' '\r'] { Token lexbuf }
-    | '0' | ['1'-'9']['0'-'9']* { NUM (Int#2.Parse(lexemeAsString lexbuf))}
+    | '0' | ['1'-'9']['0'-'9']* { NUM (Int32.Parse(lexemeAsString lexbuf))}
     | ['a'-'z''A'-'Z']+ { keyword (lexemeAsString lexbuf)}
-    | '+' { PLUSE }
+    | '+' { PLUS }
     | '-' { MINUS }
     | '*' { TIMES }
     | '/' { DIVIDE }
