@@ -5,7 +5,7 @@ module AbstractSyntax =
     type Id = string 
 
     type Expression =
-        | Define of Id * Expression 
+        | Define of Id * Expression * Expression
         | Id of Id
         | Num of int
         | Prim of string * Expression * Expression

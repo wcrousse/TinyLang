@@ -22,7 +22,7 @@ Main:
 
 Expr:
     ID { Id $1 }
-	| ID IS Expr { Define($1, $3) }
+	| ID IS Expr Expr { Define($1, $3, $4) }
     | NUM { Num $1 }
     | LPARN Expr RPARN { $2 }
     | Expr PLUS Expr { Prim("+", $1, $3)}
