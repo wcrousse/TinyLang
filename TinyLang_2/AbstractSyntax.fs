@@ -6,6 +6,7 @@ module AbstractSyntax =
     type Statement =
         | Define of Id * Expression
         | PrintStm of Expression
+        | CompoundStm of Statement * Statement
 
     and Expression =
         | Id of Id

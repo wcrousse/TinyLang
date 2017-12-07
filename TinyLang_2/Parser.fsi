@@ -2,6 +2,7 @@
 module Parser
 type token = 
   | EOF
+  | SEMICOLON
   | LPARN
   | RPARN
   | PLUS
@@ -14,6 +15,7 @@ type token =
   | NUM of (int)
 type tokenId = 
     | TOKEN_EOF
+    | TOKEN_SEMICOLON
     | TOKEN_LPARN
     | TOKEN_RPARN
     | TOKEN_PLUS

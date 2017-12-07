@@ -24,5 +24,6 @@ rule Token = parse
     | '(' { LPARN }
     | ')' { RPARN }
     | "<-" { IS }
+	| ';' { SEMICOLON }
     | eof { EOF }
     | _ {failwith "Lexer error: illigal symbol" }

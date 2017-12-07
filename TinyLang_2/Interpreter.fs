@@ -12,7 +12,7 @@ let rec lookup id env =
         printf "kaboom"
         failwith <| sprintf "%s is not in scope" id
 
-let rec evalStatment (s : Statement) (env : Env) : Env =
+let rec evalStatement (s : Statement) (env : Env) : Env =
     let scope = [];
     match s with
     | PrintStm(expr) ->
@@ -20,6 +20,9 @@ let rec evalStatment (s : Statement) (env : Env) : Env =
         env
     | Define(id, e) ->
        (id, evalExpression e env) :: env
+    | CompoundStm(stm1, stm2) ->
+        evalStatement stm1 env
+        |> evalStatement stm2
 
 and evalExpression (e : Expression) scope : int =
     match e with
@@ -33,4 +36,4 @@ and evalExpression (e : Expression) scope : int =
         | _ -> raise <| Failure "Unknown primative"
     | Id id -> lookup id scope
 
-let tiny s = evalStatment(Parse.fromString s) []
+let tiny s = evalStatement(Parse.fromString s) []
