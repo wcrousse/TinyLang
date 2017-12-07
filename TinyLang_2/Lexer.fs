@@ -8,9 +8,12 @@ open Parser
 
 let lexemeAsString lexbuf = 
     LexBuffer<char>.LexemeString lexbuf
-let keyword s = ID s
+let keyword s =
+    match s with
+    | "print" -> PRINT
+    | _ -> ID s
 
-# 13 "Lexer.fs"
+# 16 "Lexer.fs"
 let trans : uint16[] array = 
     [| 
     (* State 0 *)
@@ -57,64 +60,64 @@ and Token  (lexbuf : Microsoft.FSharp.Text.Lexing.LexBuffer<_>) = _fslex_Token  
 and _fslex_Token  _fslex_state lexbuf =
   match _fslex_tables.Interpret(_fslex_state,lexbuf) with
   | 0 -> ( 
-# 14 "Lexer.fsl"
+# 17 "Lexer.fsl"
                                        Token lexbuf 
-# 62 "Lexer.fs"
+# 65 "Lexer.fs"
           )
   | 1 -> ( 
-# 15 "Lexer.fsl"
+# 18 "Lexer.fsl"
                                                  NUM (Int32.Parse(lexemeAsString lexbuf))
-# 67 "Lexer.fs"
+# 70 "Lexer.fs"
           )
   | 2 -> ( 
-# 16 "Lexer.fsl"
+# 19 "Lexer.fsl"
                                          keyword (lexemeAsString lexbuf)
-# 72 "Lexer.fs"
+# 75 "Lexer.fs"
           )
   | 3 -> ( 
-# 17 "Lexer.fsl"
+# 20 "Lexer.fsl"
                            PLUS 
-# 77 "Lexer.fs"
+# 80 "Lexer.fs"
           )
   | 4 -> ( 
-# 18 "Lexer.fsl"
+# 21 "Lexer.fsl"
                            MINUS 
-# 82 "Lexer.fs"
+# 85 "Lexer.fs"
           )
   | 5 -> ( 
-# 19 "Lexer.fsl"
+# 22 "Lexer.fsl"
                            TIMES 
-# 87 "Lexer.fs"
+# 90 "Lexer.fs"
           )
   | 6 -> ( 
-# 20 "Lexer.fsl"
+# 23 "Lexer.fsl"
                            DIVIDE 
-# 92 "Lexer.fs"
+# 95 "Lexer.fs"
           )
   | 7 -> ( 
-# 21 "Lexer.fsl"
+# 24 "Lexer.fsl"
                            LPARN 
-# 97 "Lexer.fs"
+# 100 "Lexer.fs"
           )
   | 8 -> ( 
-# 22 "Lexer.fsl"
+# 25 "Lexer.fsl"
                            RPARN 
-# 102 "Lexer.fs"
+# 105 "Lexer.fs"
           )
   | 9 -> ( 
-# 23 "Lexer.fsl"
+# 26 "Lexer.fsl"
                             IS 
-# 107 "Lexer.fs"
+# 110 "Lexer.fs"
           )
   | 10 -> ( 
-# 24 "Lexer.fsl"
+# 27 "Lexer.fsl"
                            EOF 
-# 112 "Lexer.fs"
+# 115 "Lexer.fs"
           )
   | 11 -> ( 
-# 25 "Lexer.fsl"
+# 28 "Lexer.fsl"
                         failwith "Lexer error: illigal symbol" 
-# 117 "Lexer.fs"
+# 120 "Lexer.fs"
           )
   | _ -> failwith "Token"
 

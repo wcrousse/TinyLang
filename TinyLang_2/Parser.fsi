@@ -8,6 +8,7 @@ type token =
   | MINUS
   | TIMES
   | DIVIDE
+  | PRINT
   | IS
   | ID of (string)
   | NUM of (int)
@@ -19,6 +20,7 @@ type tokenId =
     | TOKEN_MINUS
     | TOKEN_TIMES
     | TOKEN_DIVIDE
+    | TOKEN_PRINT
     | TOKEN_IS
     | TOKEN_ID
     | TOKEN_NUM
@@ -28,6 +30,7 @@ type nonTerminalId =
     | NONTERM__startMain
     | NONTERM_Main
     | NONTERM_Expr
+    | NONTERM_Stmt
 /// This function maps tokens to integer indexes
 val tagOfToken: token -> int
 
@@ -39,4 +42,4 @@ val prodIdxToNonTerminal: int -> nonTerminalId
 
 /// This function gets the name of a token as a string
 val token_to_string: token -> string
-val Main : (Microsoft.FSharp.Text.Lexing.LexBuffer<'cty> -> token) -> Microsoft.FSharp.Text.Lexing.LexBuffer<'cty> -> (TinyLang2.AbstractSyntax.Expression) 
+val Main : (Microsoft.FSharp.Text.Lexing.LexBuffer<'cty> -> token) -> Microsoft.FSharp.Text.Lexing.LexBuffer<'cty> -> (TinyLang2.AbstractSyntax.Statement) 

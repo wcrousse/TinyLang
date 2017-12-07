@@ -8,7 +8,7 @@ open TinyLang2.AbstractSyntax
 
 (* Plain parsing from a string, with poor error reporting *)
 
-let fromString (str : string) : Expression =
+let fromString (str : string) : Statement =
     let lexbuf = LexBuffer<char>.FromString(str)
     try
       Parser.Main Lexer.Token lexbuf

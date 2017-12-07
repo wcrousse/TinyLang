@@ -1,11 +1,14 @@
 ﻿namespace TinyLang2
 
 module AbstractSyntax =
+    type Id = string
 
-    type Id = string 
+    type Statement =
+        | Define of Id * Expression
+        | PrintStm of Expression
 
-    type Expression =
-        | Define of Id * Expression * Expression
+    and Expression =
         | Id of Id
         | Num of int
         | Prim of string * Expression * Expression
+        | SeqExpression of Statement * Expression
