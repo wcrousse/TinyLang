@@ -20,5 +20,6 @@ rule Token = parse
     | '/' { DIVIDE }
     | '(' { LPARN }
     | ')' { RPARN }
+    | "<-" { IS }
     | eof { EOF }
     | _ {failwith "Lexer error: illigal symbol" }

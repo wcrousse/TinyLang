@@ -8,6 +8,7 @@ type token =
   | MINUS
   | TIMES
   | DIVIDE
+  | IS
   | ID of (string)
   | NUM of (int)
 type tokenId = 
@@ -18,6 +19,7 @@ type tokenId =
     | TOKEN_MINUS
     | TOKEN_TIMES
     | TOKEN_DIVIDE
+    | TOKEN_IS
     | TOKEN_ID
     | TOKEN_NUM
     | TOKEN_end_of_input
