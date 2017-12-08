@@ -15,6 +15,7 @@ type token =
   | PRINT
   | IS
   | ID of (string)
+  | BOOL of (bool)
   | NUM of (int)
 type tokenId = 
     | TOKEN_EOF
@@ -31,6 +32,7 @@ type tokenId =
     | TOKEN_PRINT
     | TOKEN_IS
     | TOKEN_ID
+    | TOKEN_BOOL
     | TOKEN_NUM
     | TOKEN_end_of_input
     | TOKEN_error

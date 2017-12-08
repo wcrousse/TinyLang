@@ -32,7 +32,8 @@ let rec evalStatement (s : Statement) (env : Env) : Env =
 
 and evalExpression (e : Expression) scope : int =
     match e with
-    | Num(n) -> n
+    | Num n -> n
+    | Bool b -> if b then 1 else 0
     | Prim(op, e1, e2) ->
         match op with
         | "+" -> (evalExpression e1 scope) + (evalExpression e2 scope)

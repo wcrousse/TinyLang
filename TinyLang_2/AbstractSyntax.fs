@@ -13,3 +13,4 @@ module AbstractSyntax =
         | Id of Id
         | Num of int
         | Prim of string * Expression * Expression
+        | Bool of bool
