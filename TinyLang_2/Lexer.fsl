@@ -15,11 +15,12 @@ let keyword s =
     | "true" 
     | "false" -> BOOL (bool.Parse(s)) 
     | "while" -> WHILE
+    | "function" -> FUNCTION
     | _ -> ID s
 }
 
 rule Token = parse
-    | [' ' '\t' '\r'] { Token lexbuf }
+    | [' ' '\t' '\r' '\n'] { Token lexbuf }
     | '0' | ['1'-'9']['0'-'9']* { NUM (Int32.Parse(lexemeAsString lexbuf))}
     | ['a'-'z''A'-'Z']+ { keyword (lexemeAsString lexbuf)}
     | '+' { PLUS }

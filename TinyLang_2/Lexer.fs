@@ -16,13 +16,14 @@ let keyword s =
     | "true" 
     | "false" -> BOOL (bool.Parse(s)) 
     | "while" -> WHILE
+    | "function" -> FUNCTION
     | _ -> ID s
 
-# 21 "Lexer.fs"
+# 22 "Lexer.fs"
 let trans : uint16[] array = 
     [| 
     (* State 0 *)
-     [| 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 1us; 18us; 18us; 18us; 1us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 1us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 12us; 13us; 7us; 5us; 18us; 6us; 18us; 8us; 2us; 3us; 3us; 3us; 3us; 3us; 3us; 3us; 3us; 3us; 18us; 16us; 11us; 10us; 9us; 18us; 18us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 18us; 18us; 18us; 18us; 18us; 18us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 14us; 18us; 15us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 17us; |];
+     [| 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 1us; 1us; 18us; 18us; 1us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 1us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 12us; 13us; 7us; 5us; 18us; 6us; 18us; 8us; 2us; 3us; 3us; 3us; 3us; 3us; 3us; 3us; 3us; 3us; 18us; 16us; 11us; 10us; 9us; 18us; 18us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 18us; 18us; 18us; 18us; 18us; 18us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 4us; 14us; 18us; 15us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 18us; 17us; |];
     (* State 1 *)
      [| 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; 65535us; |];
     (* State 2 *)
@@ -75,94 +76,94 @@ and Token  (lexbuf : Microsoft.FSharp.Text.Lexing.LexBuffer<_>) = _fslex_Token  
 and _fslex_Token  _fslex_state lexbuf =
   match _fslex_tables.Interpret(_fslex_state,lexbuf) with
   | 0 -> ( 
-# 22 "Lexer.fsl"
-                                       Token lexbuf 
-# 80 "Lexer.fs"
+# 23 "Lexer.fsl"
+                                            Token lexbuf 
+# 81 "Lexer.fs"
           )
   | 1 -> ( 
-# 23 "Lexer.fsl"
+# 24 "Lexer.fsl"
                                                  NUM (Int32.Parse(lexemeAsString lexbuf))
-# 85 "Lexer.fs"
+# 86 "Lexer.fs"
           )
   | 2 -> ( 
-# 24 "Lexer.fsl"
+# 25 "Lexer.fsl"
                                          keyword (lexemeAsString lexbuf)
-# 90 "Lexer.fs"
+# 91 "Lexer.fs"
           )
   | 3 -> ( 
-# 25 "Lexer.fsl"
+# 26 "Lexer.fsl"
                            PLUS 
-# 95 "Lexer.fs"
+# 96 "Lexer.fs"
           )
   | 4 -> ( 
-# 26 "Lexer.fsl"
+# 27 "Lexer.fsl"
                            MINUS 
-# 100 "Lexer.fs"
+# 101 "Lexer.fs"
           )
   | 5 -> ( 
-# 27 "Lexer.fsl"
+# 28 "Lexer.fsl"
                            TIMES 
-# 105 "Lexer.fs"
+# 106 "Lexer.fs"
           )
   | 6 -> ( 
-# 28 "Lexer.fsl"
+# 29 "Lexer.fsl"
                            DIVIDE 
-# 110 "Lexer.fs"
+# 111 "Lexer.fs"
           )
   | 7 -> ( 
-# 29 "Lexer.fsl"
+# 30 "Lexer.fsl"
                         GT 
-# 115 "Lexer.fs"
+# 116 "Lexer.fs"
           )
   | 8 -> ( 
-# 30 "Lexer.fsl"
+# 31 "Lexer.fsl"
                         EQ 
-# 120 "Lexer.fs"
+# 121 "Lexer.fs"
           )
   | 9 -> ( 
-# 31 "Lexer.fsl"
+# 32 "Lexer.fsl"
                         LT 
-# 125 "Lexer.fs"
+# 126 "Lexer.fs"
           )
   | 10 -> ( 
-# 32 "Lexer.fsl"
+# 33 "Lexer.fsl"
                            LPARN 
-# 130 "Lexer.fs"
+# 131 "Lexer.fs"
           )
   | 11 -> ( 
-# 33 "Lexer.fsl"
+# 34 "Lexer.fsl"
                            RPARN 
-# 135 "Lexer.fs"
+# 136 "Lexer.fs"
           )
   | 12 -> ( 
-# 34 "Lexer.fsl"
+# 35 "Lexer.fsl"
                         STARTBLOCK 
-# 140 "Lexer.fs"
+# 141 "Lexer.fs"
           )
   | 13 -> ( 
-# 35 "Lexer.fsl"
+# 36 "Lexer.fsl"
                         ENDBLOCK 
-# 145 "Lexer.fs"
+# 146 "Lexer.fs"
           )
   | 14 -> ( 
-# 36 "Lexer.fsl"
+# 37 "Lexer.fsl"
                             DEFINE 
-# 150 "Lexer.fs"
+# 151 "Lexer.fs"
           )
   | 15 -> ( 
-# 37 "Lexer.fsl"
+# 38 "Lexer.fsl"
                         SEMICOLON 
-# 155 "Lexer.fs"
+# 156 "Lexer.fs"
           )
   | 16 -> ( 
-# 38 "Lexer.fsl"
+# 39 "Lexer.fsl"
                            EOF 
-# 160 "Lexer.fs"
+# 161 "Lexer.fs"
           )
   | 17 -> ( 
-# 39 "Lexer.fsl"
+# 40 "Lexer.fsl"
                         failwith "Lexer error: illigal symbol" 
-# 165 "Lexer.fs"
+# 166 "Lexer.fs"
           )
   | _ -> failwith "Token"
 

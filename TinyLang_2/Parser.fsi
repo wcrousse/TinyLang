@@ -14,9 +14,11 @@ type token =
   | LT
   | GT
   | EQ
+  | INVOKE
   | IF
   | WHILE
   | ELSE
+  | FUNCTION
   | PRINT
   | DEFINE
   | ID of (string)
@@ -36,9 +38,11 @@ type tokenId =
     | TOKEN_LT
     | TOKEN_GT
     | TOKEN_EQ
+    | TOKEN_INVOKE
     | TOKEN_IF
     | TOKEN_WHILE
     | TOKEN_ELSE
+    | TOKEN_FUNCTION
     | TOKEN_PRINT
     | TOKEN_DEFINE
     | TOKEN_ID

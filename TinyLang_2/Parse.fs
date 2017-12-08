@@ -6,8 +6,6 @@ open System.Text
 open Microsoft.FSharp.Text.Lexing
 open TinyLang2.AbstractSyntax
 
-(* Plain parsing from a string, with poor error reporting *)
-
 let fromString (str : string) : Statement =
     let lexbuf = LexBuffer<char>.FromString(str)
     try
@@ -16,8 +14,6 @@ let fromString (str : string) : Statement =
       | exn -> let pos = lexbuf.EndPos
                failwithf "%s near line %d, column %d\n"
                   (exn.Message) (pos.Line+1) pos.Column
-
-(* Parsing from a text file *)
 
 let fromFile (filename : string) =
     use reader = new StreamReader(filename)
