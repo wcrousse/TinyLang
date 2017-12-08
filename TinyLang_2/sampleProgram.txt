@@ -1,5 +1,35 @@
-﻿x <- 5;
-y <- 6;
-print x + y;
-print y - x;
+﻿"x <- 5; \
+y <- 6;  \
+print x + y; \
+print y - x; \
 
+"                          \
+"\
+function fib(n) {\
+	count <- 0; \
+	a <- 1; \
+	b <- 0; \
+	while (count < n) { \
+		print a; \
+		temp <- b; \
+		b <- a; \
+		a <- a + temp; \
+		count <- count + 1 \
+	}; \
+	9999 \
+} \
+print fib(9)"
+                          \
+function fib(n){           \
+	a <- 1;                \
+	b <- 0;                \
+	end <- 5;              \
+	while(a > end) {       \
+		print a;           \
+		temp <- b;         \
+		b <- a;            \
+		a <- a + temp      \
+	}                      \
+	0 	                   \
+}                          \
+print fib(5)"
