@@ -18,7 +18,7 @@ let rec evalStatement (s : Statement) (env : Env) : Env =
     | PrintStm(expr) ->
         printfn "%d" <| evalExpression expr env
         env
-    | Define(id, e) ->
+    | Definition(id, e) ->
        (id, evalExpression e env) :: env
     | CompoundStm(stm1, stm2) ->
         evalStatement stm1 env
@@ -29,17 +29,28 @@ let rec evalStatement (s : Statement) (env : Env) : Env =
             | _ ->
                 evalStatement stm env |> ignore
                 env
+    | WhileStm (expr, stm) ->
+        match (evalExpression expr env) with
+        | 0 -> env
+        | 1 ->
+            let loopEnv = evalStatement stm env
+            evalStatement (WhileStm (expr, stm)) loopEnv
 
 and evalExpression (e : Expression) scope : int =
     match e with
     | Num n -> n
     | Bool b -> if b then 1 else 0
     | Prim(op, e1, e2) ->
+        let v1 = evalExpression e1 scope
+        let v2 = evalExpression e2 scope
         match op with
-        | "+" -> (evalExpression e1 scope) + (evalExpression e2 scope)
-        | "-" -> (evalExpression e1 scope) - (evalExpression e2 scope)
-        | "*" -> (evalExpression e1 scope) * (evalExpression e2 scope)
-        | "/" -> (evalExpression e1 scope) / (evalExpression e2 scope)
+        | "+" ->  v1 + v2
+        | "-" -> v1 - v2
+        | "*" -> v1 * v2
+        | "/" -> v1 / v2
+        | "<" -> if (v1 < v2) then 1 else 0
+        | ">" -> if (v1 > v2) then 1 else 0
+        | "=" -> if (v1 = v2) then 1 else 0
         | _ -> raise <| Failure "Unknown primative"
     | Id id -> lookup id scope
 

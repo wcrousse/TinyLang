@@ -11,9 +11,13 @@ type token =
   | MINUS
   | TIMES
   | DIVIDE
+  | LT
+  | GT
+  | EQ
   | IF
+  | WHILE
   | PRINT
-  | IS
+  | DEFINE
   | ID of (string)
   | BOOL of (bool)
   | NUM of (int)
@@ -28,9 +32,13 @@ type tokenId =
     | TOKEN_MINUS
     | TOKEN_TIMES
     | TOKEN_DIVIDE
+    | TOKEN_LT
+    | TOKEN_GT
+    | TOKEN_EQ
     | TOKEN_IF
+    | TOKEN_WHILE
     | TOKEN_PRINT
-    | TOKEN_IS
+    | TOKEN_DEFINE
     | TOKEN_ID
     | TOKEN_BOOL
     | TOKEN_NUM

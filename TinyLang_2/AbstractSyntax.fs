@@ -4,10 +4,11 @@ module AbstractSyntax =
     type Id = string
 
     type Statement =
-        | Define of Id * Expression
+        | Definition of Id * Expression
         | PrintStm of Expression
         | CompoundStm of Statement * Statement
         | IfStm of Expression * Statement
+        | WhileStm of Expression * Statement
 
     and Expression =
         | Id of Id

@@ -13,6 +13,7 @@ let keyword s =
     | "if" -> IF
     | "true" 
     | "false" -> BOOL (bool.Parse(s)) 
+    | "while" -> WHILE
     | _ -> ID s
 }
 
@@ -24,11 +25,14 @@ rule Token = parse
     | '-' { MINUS }
     | '*' { TIMES }
     | '/' { DIVIDE }
+	| '>' { GT }
+	| '=' { EQ }
+	| '<' { LT }
     | '(' { LPARN }
     | ')' { RPARN }
 	| '{' { STARTBLOCK }
 	| '}' { ENDBLOCK }
-    | "<-" { IS }
+    | "<-" { DEFINE }
 	| ';' { SEMICOLON }
     | eof { EOF }
     | _ {failwith "Lexer error: illigal symbol" }
