@@ -7,9 +7,9 @@ module AbstractSyntax =
         | Define of Id * Expression
         | PrintStm of Expression
         | CompoundStm of Statement * Statement
+        | IfStm of Expression * Statement
 
     and Expression =
         | Id of Id
         | Num of int
         | Prim of string * Expression * Expression
-        | SeqExpression of Statement * Expression

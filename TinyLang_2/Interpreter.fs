@@ -23,6 +23,12 @@ let rec evalStatement (s : Statement) (env : Env) : Env =
     | CompoundStm(stm1, stm2) ->
         evalStatement stm1 env
         |> evalStatement stm2
+    | IfStm (expr, stm) ->
+        match (evalExpression expr env) with
+            | 0 -> env
+            | _ ->
+                evalStatement stm env |> ignore
+                env
 
 and evalExpression (e : Expression) scope : int =
     match e with

@@ -6,8 +6,9 @@
 %token <string> ID
 %token IS
 %token PRINT
+%token IF
 %token PLUS MINUS TIMES DIVIDE
-%token LPARN RPARN
+%token LPARN RPARN STARTBLOCK ENDBLOCK
 %token SEMICOLON
 %token EOF
 
@@ -26,11 +27,12 @@ Expr:
     ID { Id $1 }
     | NUM { Num $1 }
     | LPARN Expr RPARN { $2 }
-    | Expr PLUS Expr { Prim("+", $1, $3)}
-    | Expr MINUS Expr { Prim("-", $1, $3)}
-    | Expr TIMES Expr { Prim("*", $1, $3)}
+    | Expr PLUS Expr { Prim("+", $1, $3) }
+    | Expr MINUS Expr { Prim("-", $1, $3) }
+    | Expr TIMES Expr { Prim("*", $1, $3) }
 
 Stmt: 
     ID IS Expr  { Define($1, $3) }
 	| PRINT Expr { PrintStm($2) }
 	| Stmt SEMICOLON Stmt { CompoundStm ($1, $3) }
+	| IF LPARN Expr RPARN STARTBLOCK Stmt ENDBLOCK { IfStm($3, $6) }

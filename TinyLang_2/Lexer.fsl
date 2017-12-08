@@ -10,6 +10,7 @@ let lexemeAsString lexbuf =
 let keyword s =
     match s with
     | "print" -> PRINT
+    | "if" -> IF
     | _ -> ID s
 }
 
@@ -23,6 +24,8 @@ rule Token = parse
     | '/' { DIVIDE }
     | '(' { LPARN }
     | ')' { RPARN }
+	| '{' { STARTBLOCK }
+	| '}' { ENDBLOCK }
     | "<-" { IS }
 	| ';' { SEMICOLON }
     | eof { EOF }

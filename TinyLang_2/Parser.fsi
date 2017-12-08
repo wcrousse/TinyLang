@@ -5,10 +5,13 @@ type token =
   | SEMICOLON
   | LPARN
   | RPARN
+  | STARTBLOCK
+  | ENDBLOCK
   | PLUS
   | MINUS
   | TIMES
   | DIVIDE
+  | IF
   | PRINT
   | IS
   | ID of (string)
@@ -18,10 +21,13 @@ type tokenId =
     | TOKEN_SEMICOLON
     | TOKEN_LPARN
     | TOKEN_RPARN
+    | TOKEN_STARTBLOCK
+    | TOKEN_ENDBLOCK
     | TOKEN_PLUS
     | TOKEN_MINUS
     | TOKEN_TIMES
     | TOKEN_DIVIDE
+    | TOKEN_IF
     | TOKEN_PRINT
     | TOKEN_IS
     | TOKEN_ID
