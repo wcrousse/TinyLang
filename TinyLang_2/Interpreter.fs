@@ -29,10 +29,18 @@ let rec evalStatement (s : Statement) (env : Env) : Env =
             | _ ->
                 evalStatement stm env |> ignore
                 env
+    | IfElseStm (expr, ifPart, elsePart) ->
+        match (evalExpression expr env) with
+            | 0 ->
+                evalStatement elsePart env |> ignore
+                env
+            | _ ->
+                evalStatement ifPart env |> ignore
+                env
     | WhileStm (expr, stm) ->
         match (evalExpression expr env) with
         | 0 -> env
-        | 1 ->
+        | _ ->
             let loopEnv = evalStatement stm env
             evalStatement (WhileStm (expr, stm)) loopEnv
 

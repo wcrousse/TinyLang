@@ -7,7 +7,7 @@
 %token <string> ID
 %token DEFINE
 %token PRINT
-%token IF WHILE
+%token IF WHILE ELSE
 %token PLUS MINUS TIMES DIVIDE LT GT EQ
 %token LPARN RPARN STARTBLOCK ENDBLOCK
 %token SEMICOLON
@@ -42,5 +42,6 @@ Stmt:
     ID DEFINE Expr  { Definition($1, $3) }
 	| PRINT Expr { PrintStm($2) }
 	| Stmt SEMICOLON Stmt { CompoundStm ($1, $3) }
+    | IF LPARN Expr RPARN STARTBLOCK Stmt ENDBLOCK ELSE STARTBLOCK Stmt ENDBLOCK { IfElseStm($3, $6, $10) }
 	| IF LPARN Expr RPARN STARTBLOCK Stmt ENDBLOCK { IfStm($3, $6) }
 	| WHILE LPARN Expr RPARN STARTBLOCK Stmt ENDBLOCK { WhileStm($3, $6) }

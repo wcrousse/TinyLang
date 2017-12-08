@@ -16,6 +16,7 @@ type token =
   | EQ
   | IF
   | WHILE
+  | ELSE
   | PRINT
   | DEFINE
   | ID of (string)
@@ -37,6 +38,7 @@ type tokenId =
     | TOKEN_EQ
     | TOKEN_IF
     | TOKEN_WHILE
+    | TOKEN_ELSE
     | TOKEN_PRINT
     | TOKEN_DEFINE
     | TOKEN_ID

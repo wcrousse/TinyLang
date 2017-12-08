@@ -11,6 +11,7 @@ let keyword s =
     match s with
     | "print" -> PRINT
     | "if" -> IF
+    | "else" -> ELSE
     | "true" 
     | "false" -> BOOL (bool.Parse(s)) 
     | "while" -> WHILE

@@ -8,6 +8,7 @@ module AbstractSyntax =
         | PrintStm of Expression
         | CompoundStm of Statement * Statement
         | IfStm of Expression * Statement
+        | IfElseStm of Expression * Statement * Statement
         | WhileStm of Expression * Statement
 
     and Expression =
