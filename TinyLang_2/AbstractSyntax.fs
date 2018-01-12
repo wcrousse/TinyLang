@@ -3,7 +3,7 @@
 module AbstractSyntax =
     type Id = string
 
-    and Expression =
+    type Expression =
         | Id of Id
         | Num of int
         | Bool of bool
